@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+ * Source File Name: GameController.cs
+ * Author: Lovepreet Ralh
+ * Last Modified by: Lovepreet ralh
+ * Date Last Modified: 29th Feb,2016
+ * Program Description: Controls the score, lives and restart the game
+ * Revision History:version 1.3
+ * 
+ */
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -8,9 +17,6 @@ public class GameController : MonoBehaviour
     // PRIVATE INSTANCE VARIABLES
     private int _scoreValue;
     private int _livesValue;
-
-    [SerializeField]
-    private AudioSource _gameOverSound;
 
 
     // PUBLIC ACCESS METHODS
@@ -55,7 +61,6 @@ public class GameController : MonoBehaviour
     public Text GameOverLabel;
     public Text HighScoreLabel;
     public Button RestartButton;
-    public ChameleonController chameleon;
 
     // Use this for initialization
     void Start()
@@ -77,10 +82,12 @@ public class GameController : MonoBehaviour
     {
         this.ScoreValue = 0;
         this.LivesValue = 5;
-        this.GameOverLabel.gameObject.SetActive(false);
-        this.HighScoreLabel.gameObject.SetActive(false);
+        this.GameOverLabel.gameObject.SetActive (false);
+        this.HighScoreLabel.gameObject.SetActive (false);
         this.RestartButton.gameObject.SetActive(false);
     }
+
+    
 
     // PUBLIC METHODS
     public void _endGame()
@@ -90,13 +97,12 @@ public class GameController : MonoBehaviour
         this.HighScoreLabel.gameObject.SetActive(true);
         this.LivesLabel.gameObject.SetActive(false);
         this.ScoreLabel.gameObject.SetActive(false);
-        this._gameOverSound.Play();
         this.RestartButton.gameObject.SetActive(true);
-        this.chameleon.gameObject.SetActive(false);
     }
 
     public void RestartButtonClick()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log("restart");
+        Application.LoadLevel("Main");
     }
 }

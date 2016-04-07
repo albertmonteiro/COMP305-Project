@@ -3,7 +3,17 @@ guid: d05701b3b14074bedb07532359b99f30
 timeCreated: 1455035417
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: coin01
+    21300002: coin02
+    21300004: coin03
+    21300006: coin04
+    21300008: coin05
+    21300010: coin06
+    21300012: coin07
+    21300014: coin08
+    21300016: coin09
+    21300018: coin10
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +48,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +59,140 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: coin01
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 37
+        height: 40
+      alignment: 9
+      pivot: {x: 0.45945945, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 20}
+        - {x: -17, y: 15}
+        - {x: -17, y: -16}
+        - {x: -11, y: -20}
+        - {x: 15, y: -20}
+        - {x: 20, y: -14}
+        - {x: 20, y: 19}
+        - {x: 16, y: 20}
+    - name: coin02
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 2
+        width: 30
+        height: 40
+      alignment: 9
+      pivot: {x: 0.46666667, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: coin03
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 86
+        width: 21
+        height: 40
+      alignment: 9
+      pivot: {x: 0.42857143, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: coin04
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 86
+        width: 13
+        height: 40
+      alignment: 9
+      pivot: {x: 0.3846154, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: coin05
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 86
+        width: 8
+        height: 40
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: coin06
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 44
+        width: 13
+        height: 40
+      alignment: 9
+      pivot: {x: 0.30769232, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: coin07
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 2
+        width: 22
+        height: 40
+      alignment: 9
+      pivot: {x: 0.4090909, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: coin08
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 44
+        width: 30
+        height: 40
+      alignment: 9
+      pivot: {x: 0.43333334, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: coin09
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 44
+        width: 38
+        height: 40
+      alignment: 9
+      pivot: {x: 0.4473684, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 20}
+        - {x: -17, y: 14}
+        - {x: -17, y: -18}
+        - {x: -13, y: -20}
+        - {x: 21, y: -20}
+        - {x: 21, y: 16}
+        - {x: 17, y: 20}
+    - name: coin10
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 86
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: 20}
+        - {x: -18, y: 12}
+        - {x: -18, y: -13}
+        - {x: -14, y: -20}
+        - {x: 19, y: -20}
+        - {x: 22, y: -19}
+        - {x: 22, y: 14}
+        - {x: 14, y: 20}
     outline: []
   spritePackingTag: 
   userData: 
