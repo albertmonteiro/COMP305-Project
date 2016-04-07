@@ -84,7 +84,7 @@ public class HeroControllerScript : MonoBehaviour
     void FixedUpdate()
     {
        
-         currentPosition = new Vector3(this._transform.position.x, this._transform.position.y, -10f);
+         currentPosition = new Vector3(-1.5f, this._transform.position.y, -10f);
         this.camera.position = currentPosition;
         
         this._isGrounded = Physics2D.Linecast(this._transform.position, this.groundCheck.position, 1<< LayerMask.NameToLayer("Ground"));
@@ -103,7 +103,7 @@ public class HeroControllerScript : MonoBehaviour
         float absVelY = Mathf.Abs(this._rigidBody2D.velocity.y);
        // Debug.Log(_isGrounded);
         //check if the player is grounded
-        if (this._isGrounded)
+		if (this._isGrounded)
         {
             //gets a number between -1 to 1 for both horizontaland vertical axis
             this._move = Input.GetAxis("Horizontal");
@@ -149,7 +149,7 @@ public class HeroControllerScript : MonoBehaviour
                     
                 }
                 this._animator.SetInteger("AnimState", 2);
-                //this._isGrounded = false;
+                this._isGrounded = false;
 
             }
         }
