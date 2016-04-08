@@ -169,19 +169,17 @@ public class HeroControllerScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Berry"))
+        if (other.gameObject.CompareTag("StarLevel1"))
         {
             this._berrySound.Play();
             Destroy(other.gameObject);
             this.gameController.ScoreValue += 100;
         }
 
-        if (other.gameObject.CompareTag("Spikes"))
+        if (other.gameObject.CompareTag("EnemyLevel1"))
         {
             this._hurtSound.Play();
             this.gameController.LivesValue--;
-            this._transform.position = new Vector3(this.currentPosition.x-80f, this.currentPosition.y, 0);
-
         }
 
         if (other.gameObject.CompareTag("Death"))

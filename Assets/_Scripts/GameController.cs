@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour
     private void _initialize()
     {
         this.ScoreValue = 0;
-        this.LivesValue = 5;
+        this.LivesValue = 3;
         this.GameOverLabel.gameObject.SetActive (false);
         this.HighScoreLabel.gameObject.SetActive (false);
         this.RestartButton.gameObject.SetActive(false);

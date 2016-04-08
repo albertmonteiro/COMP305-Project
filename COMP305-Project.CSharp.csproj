@@ -63,12 +63,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Sprites\Bhanu\_Scripts\EnemyController.cs" />
+    <Compile Include="Assets\_Scripts\CutmanController.cs" />
     <Compile Include="Assets\_Scripts\GameController.cs" />
     <Compile Include="Assets\_Scripts\HeroControllerScript.cs" />
     <Compile Include="Assets\_Scripts\InstructionsController.cs" />
     <Compile Include="Assets\_Scripts\MenuController.cs" />
     <Compile Include="Assets\_Scripts\Monster001Controller.cs" />
     <Compile Include="Assets\_Scripts\Monster002Controller.cs" />
+    <Compile Include="Assets\_Scripts\StarController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Editor\SettingsTexturePackerImporter.txt" />
