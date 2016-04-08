@@ -50,7 +50,7 @@ public class HeroControllerScript : MonoBehaviour
     private Rigidbody2D _rigidBody2D;
     private bool _isGrounded;
     private AudioSource[] _audioSources;
-    private AudioSource _berrySound;
+    private AudioSource _starSound;
     private AudioSource _jumpSound;
     private AudioSource _themeSound,_gameOverSound,_hurtSound;
     // Use this for initialization
@@ -58,8 +58,6 @@ public class HeroControllerScript : MonoBehaviour
     {
         //Initialize Public Variables
         this.velocityRange = new VelocityRange(300f, 500f);
-        // this.moveForce = 50f;
-        //this.jumpForce = 500f;
         //Initialize Private Varibles 
         this._transform = gameObject.GetComponent<Transform>();
         this._animator = gameObject.GetComponent<Animator>();
@@ -71,7 +69,7 @@ public class HeroControllerScript : MonoBehaviour
 
         //setup AudioSources
         this._audioSources = gameObject.GetComponents<AudioSource>();
-        this._berrySound = this._audioSources[0];
+        this._starSound = this._audioSources[0];
         this._jumpSound = this._audioSources[1];
         this._themeSound = this._audioSources[2];
         this._gameOverSound = this._audioSources[3];
@@ -91,9 +89,6 @@ public class HeroControllerScript : MonoBehaviour
         Debug.DrawLine(this._transform.position, this.groundCheck.position);
 
       // Debug.Log(_isGrounded);
-
-        
-
 
         float forceX = 0f;
         float forceY = 0f;
@@ -171,7 +166,7 @@ public class HeroControllerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("StarLevel1"))
         {
-            this._berrySound.Play();
+            this._starSound.Play();
             Destroy(other.gameObject);
             this.gameController.ScoreValue += 100;
         }
@@ -189,7 +184,7 @@ public class HeroControllerScript : MonoBehaviour
            this.gameController.LivesValue--;
 
         }
-        if (other.gameObject.CompareTag("Flag")|| this.gameController.LivesValue<=0)
+        if (other.gameObject.CompareTag("HouseLevel1")|| this.gameController.LivesValue<=0)
         {
             this._themeSound.Stop();
             this._gameOverSound.Play();
@@ -216,6 +211,6 @@ public class HeroControllerScript : MonoBehaviour
 
     private void _spawn()
     {
-        this._transform.position = new Vector3(245f, 30f, 0);
+        this._transform.position = new Vector3(180f, 1090f, 0);        //-200f, -185f
     }
 }
