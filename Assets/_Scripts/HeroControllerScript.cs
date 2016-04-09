@@ -174,29 +174,28 @@ public class HeroControllerScript : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyLevel1"))
         {
             this._hurtSound.Play();
+            Destroy(other.gameObject);
             this.gameController.LivesValue--;
         }
 
-        if (other.gameObject.CompareTag("Death"))
-        {
-            this._spawn();
-            this._hurtSound.Play();
-           this.gameController.LivesValue--;
+        //if (other.gameObject.CompareTag("Death"))
+        //{
+        //    this._spawn();
+        //    this._hurtSound.Play();
+        //   this.gameController.LivesValue--;
+        //}
 
-        }
         if (other.gameObject.CompareTag("HouseLevel1")|| this.gameController.LivesValue<=0)
         {
+            
+            Destroy(other.gameObject);
             this._themeSound.Stop();
             this._gameOverSound.Play();
             this.gameController._endGame();
-            
-            
         }
-        
     }
 
     //Private Methods
-
     private void _flip()
     {
         if (this._facingRight)
@@ -211,6 +210,6 @@ public class HeroControllerScript : MonoBehaviour
 
     private void _spawn()
     {
-        this._transform.position = new Vector3(180f, 1090f, 0);        //-200f, -185f
+        this._transform.position = new Vector3(-200f, -185f, 0);        //180f, 1090f   //
     }
 }

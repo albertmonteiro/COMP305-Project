@@ -1,10 +1,10 @@
 ﻿/*
  * Source File Name: GameController.cs
  * Author: Lovepreet Ralh
- * Last Modified by: Lovepreet ralh
- * Date Last Modified: 29th Feb,2016
+ * Last Modified by: Bhanu Kaplish
+ * Date Last Modified: 8th Apr,2016
  * Program Description: Controls the score, lives and restart the game
- * Revision History:version 1.3
+ * Revision History:version 1.4
  * 
  */
 using UnityEngine;
@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
     // PRIVATE INSTANCE VARIABLES
     private int _scoreValue;
     private int _livesValue;
+    //[SerializeField]
+    //private AudioSource _gameoverSound;
 
 
     // PUBLIC ACCESS METHODS
@@ -60,6 +62,7 @@ public class GameController : MonoBehaviour
     public Text ScoreLabel;
     public Text GameOverLabel;
     public Text HighScoreLabel;
+    public HeroControllerScript hero;
     public Button RestartButton;
 
     // Use this for initialization
@@ -86,9 +89,7 @@ public class GameController : MonoBehaviour
         this.HighScoreLabel.gameObject.SetActive (false);
         this.RestartButton.gameObject.SetActive(false);
     }
-
     
-
     // PUBLIC METHODS
     public void _endGame()
     {
@@ -97,12 +98,14 @@ public class GameController : MonoBehaviour
         this.HighScoreLabel.gameObject.SetActive(true);
         this.LivesLabel.gameObject.SetActive(false);
         this.ScoreLabel.gameObject.SetActive(false);
+        this.hero.gameObject.SetActive(false);
         this.RestartButton.gameObject.SetActive(true);
+        //this._gameoverSound.Play();
     }
 
     public void RestartButtonClick()
     {
         Debug.Log("restart");
-        Application.LoadLevel("Main");
+        Application.LoadLevel("Level1");
     }
 }
