@@ -81,10 +81,16 @@ public class HeroControllerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-       
-         currentPosition = new Vector3(-1.5f, this._transform.position.y, -10f);
-        this.camera.position = currentPosition;
-        
+		if (Application.loadedLevelName == "Level1") {
+			Debug.Log ("1");
+			currentPosition = new Vector3 (-1.5f, this._transform.position.y, -10f);
+			this.camera.position = currentPosition;
+		}
+		if (Application.loadedLevelName == "Level3") {
+			Debug.Log ("dc1");
+			currentPosition = new Vector3(this._transform.position.x, this._transform.position.y, -10f);
+			this.camera.position = currentPosition;
+		}
         this._isGrounded = Physics2D.Linecast(this._transform.position, this.groundCheck.position, 1<< LayerMask.NameToLayer("Ground"));
         Debug.DrawLine(this._transform.position, this.groundCheck.position);
 
@@ -178,12 +184,36 @@ public class HeroControllerScript : MonoBehaviour
             this.gameController.LivesValue--;
         }
 
-        //if (other.gameObject.CompareTag("Death"))
-        //{
-        //    this._spawn();
-        //    this._hurtSound.Play();
-        //   this.gameController.LivesValue--;
-        //}
+		if (other.gameObject.CompareTag("Berry"))
+		{
+			//this._berrySound.Play();
+			Destroy(other.gameObject);
+			this.gameController.ScoreValue += 100;
+		}
+
+		if (other.gameObject.CompareTag("Spikes"))
+		{
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+			this._transform.position = new Vector3(this.currentPosition.x-80f, this.currentPosition.y, 0);
+
+		}
+
+		if (other.gameObject.CompareTag("Death"))
+		{
+			this._spawn();
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+
+		}
+		if (other.gameObject.CompareTag("Flag")|| this.gameController.LivesValue<=0)
+		{
+			this._themeSound.Stop();
+			this._gameOverSound.Play();
+			this.gameController._endGame();
+
+
+		}
 
         if (other.gameObject.CompareTag("HouseLevel1")|| this.gameController.LivesValue<=0)
         {
@@ -191,7 +221,8 @@ public class HeroControllerScript : MonoBehaviour
             Destroy(other.gameObject);
             this._themeSound.Stop();
             this._gameOverSound.Play();
-            this.gameController._endGame();
+
+			this.gameController.nextLevel();
         }
     }
 
@@ -210,6 +241,11 @@ public class HeroControllerScript : MonoBehaviour
 
     private void _spawn()
     {
-        this._transform.position = new Vector3(-200f, -185f, 0);        //180f, 1090f   //
+		if (Application.loadedLevelName == "Level1") {
+			this._transform.position = new Vector3 (-200f, -185f, 0);  
+		}//180f, 1090f   //
+		if (Application.loadedLevelName == "Level3") {
+			this._transform.position = new Vector3 (-2009, 500f, 0); 
+		}
     }
 }

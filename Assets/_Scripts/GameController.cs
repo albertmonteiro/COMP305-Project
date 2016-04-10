@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour
     public Text GameOverLabel;
     public Text HighScoreLabel;
     public HeroControllerScript hero;
-    public Button RestartButton;
+    public Button RestartButton, NextLevelButton;
 
     // Use this for initialization
     void Start()
@@ -88,6 +88,7 @@ public class GameController : MonoBehaviour
         this.GameOverLabel.gameObject.SetActive (false);
         this.HighScoreLabel.gameObject.SetActive (false);
         this.RestartButton.gameObject.SetActive(false);
+		this.NextLevelButton.gameObject.SetActive(false);
     }
     
     // PUBLIC METHODS
@@ -102,10 +103,23 @@ public class GameController : MonoBehaviour
         this.RestartButton.gameObject.SetActive(true);
         //this._gameoverSound.Play();
     }
+	public void nextLevel(){
+		this.HighScoreLabel.text = "High Score: " + this._scoreValue;
+		//this.GameOverLabel.gameObject.SetActive(true);
+		this.HighScoreLabel.gameObject.SetActive(true);
+		this.LivesLabel.gameObject.SetActive(false);
+		this.ScoreLabel.gameObject.SetActive(false);
+		this.hero.gameObject.SetActive(false);
+		this.NextLevelButton.gameObject.SetActive(true);
+	}
+		
 
     public void RestartButtonClick()
     {
-        Debug.Log("restart");
         Application.LoadLevel("Level1");
     }
+	public void NextLevelButtonClick()
+	{
+		Application.LoadLevel("Level3");
+	}
 }
