@@ -101,6 +101,7 @@ public class GameController : MonoBehaviour
         this.ScoreLabel.gameObject.SetActive(false);
         this.hero.gameObject.SetActive(false);
         this.RestartButton.gameObject.SetActive(true);
+		this.NextLevelButton.gameObject.SetActive(false);
         //this._gameoverSound.Play();
     }
 	public void nextLevel(){
