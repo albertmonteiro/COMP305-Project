@@ -82,12 +82,18 @@ public class HeroControllerScript : MonoBehaviour
     void FixedUpdate()
     {
 		if (Application.loadedLevelName == "Level1") {
-			Debug.Log ("1");
+            //Debug.Log ("1");
 			currentPosition = new Vector3 (-1.5f, this._transform.position.y, -10f);
 			this.camera.position = currentPosition;
-		}
+        }
+        if (Application.loadedLevelName == "Level2")
+        {
+            //Debug.Log ("dc1");
+            currentPosition = new Vector3(this._transform.position.x, this._transform.position.y, -10f);
+            this.camera.position = currentPosition;
+        }
 		if (Application.loadedLevelName == "Level3") {
-			Debug.Log ("dc1");
+            //Debug.Log ("dc1");
 			currentPosition = new Vector3(this._transform.position.x, this._transform.position.y, -10f);
 			this.camera.position = currentPosition;
 		}
@@ -102,67 +108,55 @@ public class HeroControllerScript : MonoBehaviour
         //ge absolute value of velocity for our gameobject
         float absVelX = Mathf.Abs(this._rigidBody2D.velocity.x);
         float absVelY = Mathf.Abs(this._rigidBody2D.velocity.y);
-       // Debug.Log(_isGrounded);
-        //check if the player is grounded
-		if (this._isGrounded)
+
+        // gets a number between -1 to 1 for both Horizontal and Vertical Axes
+        this._move = Input.GetAxis("Horizontal");
+        this._jump = Input.GetAxis("Vertical");
+
+        if (this._move != 0)
         {
-            //gets a number between -1 to 1 for both horizontaland vertical axis
-            this._move = Input.GetAxis("Horizontal");
-            this._jump = Input.GetAxis("Vertical");
-            if (this._move != 0)
+            if (this._move > 0)
             {
-                if (this._move > 0)
+                // movement force
+                if (absVelX < this.velocityRange.maximum)
                 {
-                    //movement force
-                    if (absVelX < this.velocityRange.maximum)
-                    {
-                        forceX = this.moveForce;
-                    }
-                    this._facingRight = true;
-                    this._flip();
+                    forceX = this.moveForce;
                 }
-                if (this._move < 0)
+                this._facingRight = true;
+                this._flip();
+            }
+            if (this._move < 0)
+            {
+                // movement force
+                if (absVelX < this.velocityRange.maximum)
                 {
-                    //movement force
-                    if (absVelX < this.velocityRange.maximum)
-                    {
-                        forceX = -this.moveForce;
-                    }
-                    this._facingRight = false;
-                    this._flip();
+                    forceX = -this.moveForce;
                 }
-                //call the walk animation
-                this._animator.SetInteger("AnimState", 1);
+                this._facingRight = false;
+                this._flip();
             }
-            else
-            {
-                //set to idle
-                this._animator.SetInteger("AnimState", 0);
-            }
-            if (this._jump > 0)
-            {
-                //jump force
-                if (absVelY < this.velocityRange.maximum)
-                {
-                    this._jumpSound.Play();
-                    forceY = this.jumpForce;
 
-                    
-                }
-                this._animator.SetInteger("AnimState", 2);
-                this._isGrounded = false;
-
-            }
+            // call the walk clip
+            this._animator.SetInteger("AnimState", 1);
         }
         else
         {
 
-            //call the jump animation
-            this._animator.SetInteger("AnimState", 2);
-
-            //call jump sound;
-            
+            // set default animation state to "idle"
+            this._animator.SetInteger("AnimState", 0);
         }
+
+        if (this._jump > 0 && this._isGrounded)
+        {
+            // jump force
+            this._jumpSound.Play();
+            if (absVelY < this.velocityRange.maximum)
+            {
+                forceY = this.jumpForce;
+            }
+            this._animator.SetInteger("AnimState", 2);
+        }
+
         //Apply forces to the player
         this._rigidBody2D.AddForce(new Vector2(forceX, forceY));
     }
@@ -196,7 +190,6 @@ public class HeroControllerScript : MonoBehaviour
 			this._hurtSound.Play();
 			this.gameController.LivesValue--;
 			this._transform.position = new Vector3(this.currentPosition.x-80f, this.currentPosition.y, 0);
-
 		}
 
 		if (other.gameObject.CompareTag("Death"))
@@ -204,15 +197,13 @@ public class HeroControllerScript : MonoBehaviour
 			this._spawn();
 			this._hurtSound.Play();
 			this.gameController.LivesValue--;
-
 		}
+
 		if (other.gameObject.CompareTag("Flag")|| this.gameController.LivesValue<=0)
 		{
 			this._themeSound.Stop();
 			this._gameOverSound.Play();
 			this.gameController._endGame();
-
-
 		}
 
         if (other.gameObject.CompareTag("HouseLevel1")|| this.gameController.LivesValue<=0)
@@ -221,9 +212,38 @@ public class HeroControllerScript : MonoBehaviour
             Destroy(other.gameObject);
             this._themeSound.Stop();
             this._gameOverSound.Play();
-
 			this.gameController.nextLevel();
         }
+
+        if (other.gameObject.CompareTag("Level2DeathCollider1"))
+        {
+            this._spawn();
+            this._hurtSound.Play();
+            this.gameController.LivesValue--;
+        }
+
+        if (other.gameObject.CompareTag("Level2DeathCollider2"))
+        {
+            this._spawn();
+            this._hurtSound.Play();
+            this.gameController.LivesValue--;
+        }
+
+        if (other.gameObject.CompareTag("Level2DeathCollider3"))
+        {
+            this._spawn();
+            this._hurtSound.Play();
+            this.gameController.LivesValue--;
+        }
+
+        if (other.gameObject.CompareTag("Level2Finish") || this.gameController.LivesValue <= 0)
+        {
+            Destroy(other.gameObject);
+            this._themeSound.Stop();
+            this._gameOverSound.Play();
+            this.gameController.nextLevel();
+        }
+
     }
 
     //Private Methods
@@ -242,10 +262,32 @@ public class HeroControllerScript : MonoBehaviour
     private void _spawn()
     {
 		if (Application.loadedLevelName == "Level1") {
-			this._transform.position = new Vector3 (-200f, -185f, 0);  
-		}//180f, 1090f   //
+			this._transform.position = new Vector3 (-200f, -185f, 0);
+        }//180f, 1090f   ////
+        if (Application.loadedLevelName == "Level2")
+        {
+            this._transform.position = new Vector3(-305f, 65f, 0);
+        }
 		if (Application.loadedLevelName == "Level3") {
 			this._transform.position = new Vector3 (-2009, 500f, 0); 
 		}
     }
+
+    //// LEVEL 2: Spawn here when you hit First death collider
+    //private void _level2SpawnPoint1()
+    //{
+    //    this._transform.position = new Vector3(-305f, 65f, 0);
+    //}
+
+    //// LEVEL 2: Spawn here when you hit Second death collider
+    //private void _level2SpawnPoint1()
+    //{
+    //    this._transform.position = new Vector3(3020f, -1465f, 0);
+    //}
+
+    //// LEVEL 2: Spawn here when you hit Third death collider
+    //private void _level2SpawnPoint1()
+    //{
+    //    this._transform.position = new Vector3(7330f, 498f, 0);
+    //}
 }
