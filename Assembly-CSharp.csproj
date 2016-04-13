@@ -49,6 +49,12 @@
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\HeroControllerScript.cs" />
      <Compile Include="Assets\_Scripts\InstructionsController.cs" />
+     <Compile Include="Assets\_Scripts\Level2EnemyController.cs" />
+     <Compile Include="Assets\_Scripts\Level2EnemyController1.cs" />
+     <Compile Include="Assets\_Scripts\Level2EnemyController2.cs" />
+     <Compile Include="Assets\_Scripts\Level2EnemyController3.cs" />
+     <Compile Include="Assets\_Scripts\Level2EnemyController4.cs" />
+     <Compile Include="Assets\_Scripts\Level2EnemyController5.cs" />
      <Compile Include="Assets\_Scripts\MenuController.cs" />
      <Compile Include="Assets\_Scripts\Monster001Controller.cs" />
      <Compile Include="Assets\_Scripts\Monster002Controller.cs" />

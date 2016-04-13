@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Monster001Controller : MonoBehaviour
 {
-    private Vector3 pos1 = new Vector3(-30, -178, 0);
-    private Vector3 pos2 = new Vector3(350, -178, 0);
+    private Vector3 pos1 = new Vector3(4710, -178, 0);
+    private Vector3 pos2 = new Vector3(5000, -178, 0);
     private float secondsForOneLength = 3.0f;
 
     void Update()

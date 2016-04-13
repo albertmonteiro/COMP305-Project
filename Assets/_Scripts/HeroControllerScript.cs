@@ -212,36 +212,50 @@ public class HeroControllerScript : MonoBehaviour
             Destroy(other.gameObject);
             this._themeSound.Stop();
             this._gameOverSound.Play();
-			this.gameController.nextLevel();
+			this.gameController.loadLevel2();
         }
+
+        if (other.gameObject.CompareTag("Level2Point"))
+        {
+            this._starSound.Play();
+            Destroy(other.gameObject);
+            this.gameController.ScoreValue += 100;
+        }
+
+		if (other.gameObject.CompareTag("Level2Enemy"))
+        {
+            this._hurtSound.Play();
+            this._level2SpawnPoint4();
+			this.gameController.LivesValue--;
+		}
 
         if (other.gameObject.CompareTag("Level2DeathCollider1"))
         {
-            this._spawn();
+            this._level2SpawnPoint1();
             this._hurtSound.Play();
             this.gameController.LivesValue--;
         }
 
         if (other.gameObject.CompareTag("Level2DeathCollider2"))
         {
-            this._spawn();
+            this._level2SpawnPoint2();
             this._hurtSound.Play();
             this.gameController.LivesValue--;
         }
 
         if (other.gameObject.CompareTag("Level2DeathCollider3"))
         {
-            this._spawn();
+            this._level2SpawnPoint3();
             this._hurtSound.Play();
             this.gameController.LivesValue--;
         }
 
         if (other.gameObject.CompareTag("Level2Finish") || this.gameController.LivesValue <= 0)
         {
-            Destroy(other.gameObject);
             this._themeSound.Stop();
-            this._gameOverSound.Play();
-            this.gameController.nextLevel();
+            //this._gameOverSound.Play();
+            Destroy(other.gameObject);
+            this.gameController.loadLevel3();
         }
 
     }
@@ -251,43 +265,63 @@ public class HeroControllerScript : MonoBehaviour
     {
         if (this._facingRight)
         {
-            this._transform.localScale = new Vector2(1.8f, 1f);
+            this._transform.localScale = new Vector2(1.5f, 1.5f);
         }
         else
         {
-            this._transform.localScale = new Vector2(-1.8f, 1f);
+            this._transform.localScale = new Vector2(-1.5f, 1.5f);
         }
     }
 
     private void _spawn()
     {
-		if (Application.loadedLevelName == "Level1") {
-			this._transform.position = new Vector3 (-200f, -185f, 0);
-        }//180f, 1090f   ////
+		if (Application.loadedLevelName == "Level1") 
+        {
+            this._transform.position = new Vector3(-200f, -185f, 0); //180f, 1090f 
+        }
         if (Application.loadedLevelName == "Level2")
         {
-            this._transform.position = new Vector3(-305f, 65f, 0);
+            this._transform.position = new Vector3(-305f, 83f, 0);
         }
-		if (Application.loadedLevelName == "Level3") {
+		if (Application.loadedLevelName == "Level3") 
+        {
 			this._transform.position = new Vector3 (-2009, 500f, 0); 
 		}
     }
 
-    //// LEVEL 2: Spawn here when you hit First death collider
-    //private void _level2SpawnPoint1()
-    //{
-    //    this._transform.position = new Vector3(-305f, 65f, 0);
-    //}
+    // LEVEL 2: Spawn here when you hit First death collider
+    private void _level2SpawnPoint1()
+    {
+        if (Application.loadedLevelName == "Level2")
+        {
+            this._transform.position = new Vector3(-305f, 83f, 0);
+        }
+    }
 
-    //// LEVEL 2: Spawn here when you hit Second death collider
-    //private void _level2SpawnPoint1()
-    //{
-    //    this._transform.position = new Vector3(3020f, -1465f, 0);
-    //}
+    // LEVEL 2: Spawn here when you hit Second death collider
+    private void _level2SpawnPoint2()
+    {
+        if (Application.loadedLevelName == "Level2")
+        {
+            this._transform.position = new Vector3(3020f, -1450f, 0);
+        }
+    }
 
-    //// LEVEL 2: Spawn here when you hit Third death collider
-    //private void _level2SpawnPoint1()
-    //{
-    //    this._transform.position = new Vector3(7330f, 498f, 0);
-    //}
+    // LEVEL 2: Spawn here when you hit Third death collider
+    private void _level2SpawnPoint3()
+    {
+        if (Application.loadedLevelName == "Level2")
+        {
+            this._transform.position = new Vector3(7326f, 515f, 0);
+        }
+    }
+
+    // LEVEL 2: Spawn here when you hit an enemy
+    private void _level2SpawnPoint4()
+    {
+        if (Application.loadedLevelName == "Level2")
+        {
+            this._transform.position = new Vector3(4270f, 119f, 0);
+        }
+    }
 }
