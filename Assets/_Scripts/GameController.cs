@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     // PRIVATE INSTANCE VARIABLES
     private int _scoreValue;
     private int _livesValue;
+
     //[SerializeField]
     //private AudioSource _gameoverSound;
 
@@ -48,7 +49,7 @@ public class GameController : MonoBehaviour
             this._livesValue = value;
             if (this._livesValue <= 0)
             {
-                this._endGame();
+                this.endGame();
             }
             else
             {
@@ -69,7 +70,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         this._initialize();
-
     }
 
     // Update is called once per frame
@@ -78,8 +78,7 @@ public class GameController : MonoBehaviour
 
     }
 
-    //PRIVATE METHODS ++++++++++++++++++
-
+    //PRIVATE METHODS +++++++++++++++++++++++++++++++++++
     //Initial Method
     private void _initialize()
     {
@@ -90,10 +89,35 @@ public class GameController : MonoBehaviour
         this.RestartButton.gameObject.SetActive(false);
         this.NextLevelButton.gameObject.SetActive(false);
     }
-    
-    // PUBLIC METHODS
-    public void _endGame()
+
+    // PUBLIC METHODS +++++++++++++++++++++++++++++++++++
+    public void level1Finished()
     {
+        //this._gameoverSound.Play();
+        this.HighScoreLabel.text = "Score: " + this._scoreValue;
+        this.GameOverLabel.gameObject.SetActive(false);
+        this.HighScoreLabel.gameObject.SetActive(true);
+        this.LivesLabel.gameObject.SetActive(false);
+        this.ScoreLabel.gameObject.SetActive(false);
+        this.hero.gameObject.SetActive(false);
+        this.RestartButton.gameObject.SetActive(true);
+        this.NextLevelButton.gameObject.SetActive(true);
+    }
+    public void level2Finished()
+    {
+        //this._gameoverSound.Play();
+        this.HighScoreLabel.text = "Score: " + this._scoreValue;
+        this.GameOverLabel.gameObject.SetActive(false);
+        this.HighScoreLabel.gameObject.SetActive(true);
+        this.LivesLabel.gameObject.SetActive(false);
+        this.ScoreLabel.gameObject.SetActive(false);
+        this.hero.gameObject.SetActive(false);
+        this.RestartButton.gameObject.SetActive(true);
+        this.NextLevelButton.gameObject.SetActive(true);
+    }
+    public void endGame()
+    {
+        //this._gameoverSound.Play();
         this.HighScoreLabel.text = "High Score: " + this._scoreValue;
         this.GameOverLabel.gameObject.SetActive(true);
         this.HighScoreLabel.gameObject.SetActive(true);
@@ -101,42 +125,27 @@ public class GameController : MonoBehaviour
         this.ScoreLabel.gameObject.SetActive(false);
         this.hero.gameObject.SetActive(false);
         this.RestartButton.gameObject.SetActive(true);
-		this.NextLevelButton.gameObject.SetActive(false);
-        //this._gameoverSound.Play();
+        this.NextLevelButton.gameObject.SetActive(false);
     }
-    public void nextLevel()
-    {
-        this.HighScoreLabel.text = "High Score: " + this._scoreValue;
-        //this.GameOverLabel.gameObject.SetActive(true);
-        this.HighScoreLabel.gameObject.SetActive(true);
-        this.LivesLabel.gameObject.SetActive(false);
-        this.ScoreLabel.gameObject.SetActive(false);
-        this.hero.gameObject.SetActive(false);
-        this.NextLevelButton.gameObject.SetActive(true);
-    }
-		
 
+    // Button event handlers +++++++++++++++++++++++++++++++++++
+    // Restart Button event handler
     public void RestartButtonClick()
     {
         Application.LoadLevel("MainMenu");
     }
+
+    // Next Level Button event handler
 	public void NextLevelButtonClick()
-	{
-		Application.LoadLevel("Level2");
+    {
+        if (Application.loadedLevelName == "Level1")
+        {
+            Application.LoadLevel("Level2");
+        }
+        if (Application.loadedLevelName == "Level2")
+        {
+            Application.LoadLevel("Level3");
+        }
 	}
-    public void loadLevel2()
-    {
-        this.HighScoreLabel.text = "High Score: " + this._scoreValue;
-        //this.GameOverLabel.gameObject.SetActive(true);
-        this.HighScoreLabel.gameObject.SetActive(true);
-        this.LivesLabel.gameObject.SetActive(false);
-        this.ScoreLabel.gameObject.SetActive(false);
-        this.hero.gameObject.SetActive(false);
-        this.NextLevelButton.gameObject.SetActive(true);
-        Application.LoadLevel("Level2");
-    }
-    public void loadLevel3()
-    {
-        Application.LoadLevel("Level3");
-    }
+
 }

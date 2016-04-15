@@ -53,6 +53,7 @@ public class HeroControllerScript : MonoBehaviour
     private AudioSource _starSound;
     private AudioSource _jumpSound;
     private AudioSource _themeSound,_gameOverSound,_hurtSound;
+
     // Use this for initialization
     void Start()
     {
@@ -100,7 +101,7 @@ public class HeroControllerScript : MonoBehaviour
         this._isGrounded = Physics2D.Linecast(this._transform.position, this.groundCheck.position, 1<< LayerMask.NameToLayer("Ground"));
         Debug.DrawLine(this._transform.position, this.groundCheck.position);
 
-      // Debug.Log(_isGrounded);
+        // Debug.Log(_isGrounded);
 
         float forceX = 0f;
         float forceY = 0f;
@@ -161,9 +162,10 @@ public class HeroControllerScript : MonoBehaviour
         this._rigidBody2D.AddForce(new Vector2(forceX, forceY));
     }
 
-
+    // Collision detectors
     void OnCollisionEnter2D(Collision2D other)
     {
+        // Level 1 colliders
         if (other.gameObject.CompareTag("StarLevel1"))
         {
             this._starSound.Play();
@@ -178,43 +180,15 @@ public class HeroControllerScript : MonoBehaviour
             this.gameController.LivesValue--;
         }
 
-		if (other.gameObject.CompareTag("Berry"))
-		{
-			//this._berrySound.Play();
-			Destroy(other.gameObject);
-			this.gameController.ScoreValue += 100;
-		}
-
-		if (other.gameObject.CompareTag("Spikes"))
-		{
-			this._hurtSound.Play();
-			this.gameController.LivesValue--;
-			this._transform.position = new Vector3(this.currentPosition.x-80f, this.currentPosition.y, 0);
-		}
-
-		if (other.gameObject.CompareTag("Death"))
-		{
-			this._spawn();
-			this._hurtSound.Play();
-			this.gameController.LivesValue--;
-		}
-
-		if (other.gameObject.CompareTag("Flag")|| this.gameController.LivesValue<=0)
-		{
-			this._themeSound.Stop();
-			this._gameOverSound.Play();
-			this.gameController._endGame();
-		}
-
-        if (other.gameObject.CompareTag("HouseLevel1")|| this.gameController.LivesValue<=0)
+        if (other.gameObject.CompareTag("HouseLevel1") || this.gameController.LivesValue <= 0)
         {
-            
+            //this._gameOverSound.Play();
             Destroy(other.gameObject);
             this._themeSound.Stop();
-            this._gameOverSound.Play();
-			this.gameController.loadLevel2();
+            this.gameController.level1Finished();
         }
 
+        // Level 2 colliders
         if (other.gameObject.CompareTag("Level2Point"))
         {
             this._starSound.Play();
@@ -222,12 +196,12 @@ public class HeroControllerScript : MonoBehaviour
             this.gameController.ScoreValue += 100;
         }
 
-		if (other.gameObject.CompareTag("Level2Enemy"))
+        if (other.gameObject.CompareTag("Level2Enemy"))
         {
             this._hurtSound.Play();
             this._level2SpawnPoint4();
-			this.gameController.LivesValue--;
-		}
+            this.gameController.LivesValue--;
+        }
 
         if (other.gameObject.CompareTag("Level2DeathCollider1"))
         {
@@ -255,12 +229,40 @@ public class HeroControllerScript : MonoBehaviour
             this._themeSound.Stop();
             //this._gameOverSound.Play();
             Destroy(other.gameObject);
-            this.gameController.loadLevel3();
+            this.gameController.level2Finished();
         }
 
+        // Level 3 colliders
+		if (other.gameObject.CompareTag("Berry"))
+		{
+			//this._berrySound.Play();
+			Destroy(other.gameObject);
+			this.gameController.ScoreValue += 100;
+		}
+
+		if (other.gameObject.CompareTag("Spikes"))
+		{
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+			this._transform.position = new Vector3(this.currentPosition.x-80f, this.currentPosition.y, 0);
+		}
+
+		if (other.gameObject.CompareTag("Death"))
+		{
+			this._spawn();
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+		}
+
+		if (other.gameObject.CompareTag("Flag") || this.gameController.LivesValue<=0)
+		{
+			this._themeSound.Stop();
+			this._gameOverSound.Play();
+			this.gameController.endGame();
+		}
     }
 
-    //Private Methods
+    //Private Methods +++++++++++++++++++++++++++++++++++++++++
     private void _flip()
     {
         if (this._facingRight)
