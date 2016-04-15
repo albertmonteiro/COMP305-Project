@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     private int _scoreValue;
     private int _livesValue;
 
+	public ScoreBoardController scoreBoard;
     //[SerializeField]
     //private AudioSource _gameoverSound;
 
@@ -32,7 +33,7 @@ public class GameController : MonoBehaviour
 
         set
         {
-            this._scoreValue = value;
+			this._scoreValue = value;
             this.ScoreLabel.text = "Score: " + this._scoreValue;
         }
     }
@@ -46,7 +47,7 @@ public class GameController : MonoBehaviour
 
         set
         {
-            this._livesValue = value;
+			this._livesValue = value;
             if (this._livesValue <= 0)
             {
                 this.endGame();
@@ -83,8 +84,9 @@ public class GameController : MonoBehaviour
     //Initial Method
     private void _initialize()
     {
-        this.ScoreValue = 0;
-        this.LivesValue = 3;
+		this.scoreBoard = FindObjectOfType (typeof(ScoreBoardController)) as ScoreBoardController;
+		this._scoreValue = scoreBoard.Score;
+		this._livesValue = scoreBoard.Lives;
         this.YouWinLabel.gameObject.SetActive(false);
         this.GameOverLabel.gameObject.SetActive (false);
         this.HighScoreLabel.gameObject.SetActive (false);
@@ -105,6 +107,8 @@ public class GameController : MonoBehaviour
         this.hero.gameObject.SetActive(false);
         this.RestartButton.gameObject.SetActive(true);
         this.NextLevelButton.gameObject.SetActive(true);
+		scoreBoard.Score = this._scoreValue;
+		scoreBoard.Lives = this._livesValue;
     }
     public void endGame()
     {
@@ -145,7 +149,7 @@ public class GameController : MonoBehaviour
     {
         if (Application.loadedLevelName == "Level1")
         {
-            Application.LoadLevel("Level2");
+            Application.LoadLevel("Level3");
         }
         if (Application.loadedLevelName == "Level2")
         {
