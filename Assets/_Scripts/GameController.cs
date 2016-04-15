@@ -65,6 +65,7 @@ public class GameController : MonoBehaviour
     public Text HighScoreLabel;
     public HeroControllerScript hero;
     public Button RestartButton, NextLevelButton;
+    public Text YouWinLabel;
 
     // Use this for initialization
     void Start()
@@ -73,10 +74,10 @@ public class GameController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    //{
 
-    }
+    //}
 
     //PRIVATE METHODS +++++++++++++++++++++++++++++++++++
     //Initial Method
@@ -84,6 +85,7 @@ public class GameController : MonoBehaviour
     {
         this.ScoreValue = 0;
         this.LivesValue = 3;
+        this.YouWinLabel.gameObject.SetActive(false);
         this.GameOverLabel.gameObject.SetActive (false);
         this.HighScoreLabel.gameObject.SetActive (false);
         this.RestartButton.gameObject.SetActive(false);
@@ -91,22 +93,11 @@ public class GameController : MonoBehaviour
     }
 
     // PUBLIC METHODS +++++++++++++++++++++++++++++++++++
-    public void level1Finished()
+    public void levelCompleted()
     {
         //this._gameoverSound.Play();
         this.HighScoreLabel.text = "Score: " + this._scoreValue;
-        this.GameOverLabel.gameObject.SetActive(false);
-        this.HighScoreLabel.gameObject.SetActive(true);
-        this.LivesLabel.gameObject.SetActive(false);
-        this.ScoreLabel.gameObject.SetActive(false);
-        this.hero.gameObject.SetActive(false);
-        this.RestartButton.gameObject.SetActive(true);
-        this.NextLevelButton.gameObject.SetActive(true);
-    }
-    public void level2Finished()
-    {
-        //this._gameoverSound.Play();
-        this.HighScoreLabel.text = "Score: " + this._scoreValue;
+        this.YouWinLabel.gameObject.SetActive(false);
         this.GameOverLabel.gameObject.SetActive(false);
         this.HighScoreLabel.gameObject.SetActive(true);
         this.LivesLabel.gameObject.SetActive(false);
@@ -119,7 +110,21 @@ public class GameController : MonoBehaviour
     {
         //this._gameoverSound.Play();
         this.HighScoreLabel.text = "High Score: " + this._scoreValue;
+        this.YouWinLabel.gameObject.SetActive(false);
         this.GameOverLabel.gameObject.SetActive(true);
+        this.HighScoreLabel.gameObject.SetActive(true);
+        this.LivesLabel.gameObject.SetActive(false);
+        this.ScoreLabel.gameObject.SetActive(false);
+        this.hero.gameObject.SetActive(false);
+        this.RestartButton.gameObject.SetActive(true);
+        this.NextLevelButton.gameObject.SetActive(false);
+    }
+    public void playerWins()
+    {
+        //this._gameoverSound.Play();
+        this.HighScoreLabel.text = "High Score: " + this._scoreValue;
+        this.YouWinLabel.gameObject.SetActive(true);
+        this.GameOverLabel.gameObject.SetActive(false);
         this.HighScoreLabel.gameObject.SetActive(true);
         this.LivesLabel.gameObject.SetActive(false);
         this.ScoreLabel.gameObject.SetActive(false);

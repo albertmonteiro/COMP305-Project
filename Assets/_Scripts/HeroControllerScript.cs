@@ -180,12 +180,12 @@ public class HeroControllerScript : MonoBehaviour
             this.gameController.LivesValue--;
         }
 
-        if (other.gameObject.CompareTag("HouseLevel1") || this.gameController.LivesValue <= 0)
+        if (other.gameObject.CompareTag("HouseLevel1"))
         {
             //this._gameOverSound.Play();
             Destroy(other.gameObject);
             this._themeSound.Stop();
-            this.gameController.level1Finished();
+            this.gameController.levelCompleted();
         }
 
         // Level 2 colliders
@@ -224,12 +224,12 @@ public class HeroControllerScript : MonoBehaviour
             this.gameController.LivesValue--;
         }
 
-        if (other.gameObject.CompareTag("Level2Finish") || this.gameController.LivesValue <= 0)
+        if (other.gameObject.CompareTag("Level2Finish"))
         {
             this._themeSound.Stop();
             //this._gameOverSound.Play();
             Destroy(other.gameObject);
-            this.gameController.level2Finished();
+            this.gameController.levelCompleted();
         }
 
         // Level 3 colliders
@@ -254,11 +254,12 @@ public class HeroControllerScript : MonoBehaviour
 			this.gameController.LivesValue--;
 		}
 
-		if (other.gameObject.CompareTag("Flag") || this.gameController.LivesValue<=0)
-		{
-			this._themeSound.Stop();
-			this._gameOverSound.Play();
-			this.gameController.endGame();
+		if (other.gameObject.CompareTag("Flag"))
+        {
+            this._themeSound.Stop();
+            //this._gameOverSound.Play();
+            Destroy(other.gameObject);
+            this.gameController.playerWins();
 		}
     }
 

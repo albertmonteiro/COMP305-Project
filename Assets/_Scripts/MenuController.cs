@@ -14,21 +14,23 @@ public class MenuController : MonoBehaviour {
 	
 	}
 
-	// Event Handler for StartButtonClick
-
+	// Event Handlers
 	public void StartButtonClick() {
 		SceneManager.LoadScene ("Level1");
 	}
 
-	public void InstructionsButtonClick() {
+	public void InstructionsButtonClick() 
+    {
 		SceneManager.LoadScene ("Instructions");
 	}
 
-	public void LevelsButtonClick() {
-		SceneManager.LoadScene ("Levels");
-	}
+    public void BackButtonClick()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 
-	public void QuitButtonClick() {
+	public void QuitButtonClick() 
+    {
 		Application.Quit();
 	}
 		
