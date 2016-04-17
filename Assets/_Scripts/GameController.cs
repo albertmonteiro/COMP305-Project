@@ -71,6 +71,7 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		
         this._initialize();
     }
 
@@ -84,9 +85,10 @@ public class GameController : MonoBehaviour
     //Initial Method
     private void _initialize()
     {
+		
 		this.scoreBoard = FindObjectOfType (typeof(ScoreBoardController)) as ScoreBoardController;
-		this._scoreValue = scoreBoard.Score;
-		this._livesValue = scoreBoard.Lives;
+		this.ScoreValue = scoreBoard.Score;
+		this.LivesValue = scoreBoard.Lives;
         this.YouWinLabel.gameObject.SetActive(false);
         this.GameOverLabel.gameObject.SetActive (false);
         this.HighScoreLabel.gameObject.SetActive (false);
@@ -97,6 +99,7 @@ public class GameController : MonoBehaviour
     // PUBLIC METHODS +++++++++++++++++++++++++++++++++++
     public void levelCompleted()
     {
+		
         //this._gameoverSound.Play();
         this.HighScoreLabel.text = "Score: " + this._scoreValue;
         this.YouWinLabel.gameObject.SetActive(false);
@@ -149,7 +152,7 @@ public class GameController : MonoBehaviour
     {
         if (Application.loadedLevelName == "Level1")
         {
-            Application.LoadLevel("Level3");
+            Application.LoadLevel("Level2");
         }
         if (Application.loadedLevelName == "Level2")
         {
