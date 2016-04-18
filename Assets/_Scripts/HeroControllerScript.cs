@@ -253,6 +253,69 @@ public class HeroControllerScript : MonoBehaviour
 			this._hurtSound.Play();
 			this.gameController.LivesValue--;
 		}
+		if (other.gameObject.CompareTag("Spikes1"))
+		{
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+			this._transform.position = new Vector3(-320, 348f, 0);
+
+			//this._transform.position = new Vector3(this.currentPosition.x-80f, this.currentPosition.y, 0);
+
+		}
+		if (other.gameObject.CompareTag("Spikes2"))
+		{
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+			this._transform.position = new Vector3(840, 380f, 0);
+
+			//this._transform.position = new Vector3(this.currentPosition.x-80f, this.currentPosition.y, 0);
+
+		}
+		if (other.gameObject.CompareTag("Spikes3"))
+		{
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+			this._transform.position = new Vector3(1319, 200, 0);
+
+			//this._transform.position = new Vector3(this.currentPosition.x-80f, this.currentPosition.y, 0);
+
+		}
+		if (other.gameObject.CompareTag("Enemy2"))
+		{
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+			this._transform.position = new Vector3(2128, 50f, 0);
+
+			//this._transform.position = new Vector3(this.currentPosition.x-80f, this.currentPosition.y, 0);
+
+		}
+		if (other.gameObject.CompareTag("Enemy1"))
+		{
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+			this._transform.position = new Vector3(-2009, 381f, 0);
+
+			//this._transform.position = new Vector3(this.currentPosition.x-80f, this.currentPosition.y, 0);
+
+		}
+		if (other.gameObject.CompareTag("Enemy3"))
+		{
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+			this._transform.position = new Vector3(3200, 200f, 0);
+
+			//this._transform.position = new Vector3(this.currentPosition.x-80f, this.currentPosition.y, 0);
+
+		}
+		if (other.gameObject.CompareTag("Spikes4"))
+		{
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+			this._transform.position = new Vector3(4000, -140f, 0);
+
+			//this._transform.position = new Vector3(this.currentPosition.x-80f, this.currentPosition.y, 0);
+
+		}
 
 		if (other.gameObject.CompareTag("Flag"))
         {

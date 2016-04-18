@@ -11,4 +11,5 @@ public class Level2EnemyController : MonoBehaviour
     {
         transform.position = Vector3.Lerp(pos1, pos2, Mathf.PingPong(Time.time / secondsForOneLength, 1f));
     }
+
 }

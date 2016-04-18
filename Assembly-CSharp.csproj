@@ -55,6 +55,7 @@
      <Compile Include="Assets\_Scripts\Level2EnemyController3.cs" />
      <Compile Include="Assets\_Scripts\Level2EnemyController4.cs" />
      <Compile Include="Assets\_Scripts\Level2EnemyController5.cs" />
+     <Compile Include="Assets\_Scripts\Level3EnemyControlller.cs" />
      <Compile Include="Assets\_Scripts\MenuController.cs" />
      <Compile Include="Assets\_Scripts\Monster001Controller.cs" />
      <Compile Include="Assets\_Scripts\Monster002Controller.cs" />

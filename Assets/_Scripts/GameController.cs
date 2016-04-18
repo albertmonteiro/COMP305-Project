@@ -146,7 +146,20 @@ public class GameController : MonoBehaviour
     {
         Application.LoadLevel("MainMenu");
     }
-
+	public void RestartLevel(){
+		if (Application.loadedLevelName == "Level1")
+		{
+			Application.LoadLevel("Level1");
+		}
+		if (Application.loadedLevelName == "Level2")
+		{
+			Application.LoadLevel("Level2");
+		}
+		if (Application.loadedLevelName == "Level3")
+		{
+			Application.LoadLevel("Level3");
+		}
+	}
     // Next Level Button event handler
 	public void NextLevelButtonClick()
     {
