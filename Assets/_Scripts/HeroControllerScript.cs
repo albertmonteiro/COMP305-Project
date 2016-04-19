@@ -253,6 +253,18 @@ public class HeroControllerScript : MonoBehaviour
 			this._hurtSound.Play();
 			this.gameController.LivesValue--;
 		}
+		if (other.gameObject.CompareTag("Death2"))
+		{
+			this._transform.position = new Vector3(1500, 320f, 0);
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+		}
+		if (other.gameObject.CompareTag("Death3"))
+		{
+			this._transform.position = new Vector3(4200, -20f, 0);
+			this._hurtSound.Play();
+			this.gameController.LivesValue--;
+		}
 		if (other.gameObject.CompareTag("Spikes1"))
 		{
 			this._hurtSound.Play();
@@ -351,7 +363,7 @@ public class HeroControllerScript : MonoBehaviour
         }
 		if (Application.loadedLevelName == "Level3") 
         {
-			this._transform.position = new Vector3 (-2009, 500f, 0); 
+			this._transform.position = new Vector3 (-2009, 350f, 0); 
 		}
     }
 

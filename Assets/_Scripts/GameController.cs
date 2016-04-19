@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		
+		DontDestroyOnLoad (this);
         this._initialize();
     }
 
@@ -100,6 +100,7 @@ public class GameController : MonoBehaviour
     public void levelCompleted()
     {
 		
+
         //this._gameoverSound.Play();
         this.HighScoreLabel.text = "Score: " + this._scoreValue;
         this.YouWinLabel.gameObject.SetActive(false);
@@ -115,6 +116,7 @@ public class GameController : MonoBehaviour
     }
     public void endGame()
     {
+		Application.LoadLevel ("GameOver");
         //this._gameoverSound.Play();
         this.HighScoreLabel.text = "High Score: " + this._scoreValue;
         this.YouWinLabel.gameObject.SetActive(false);
@@ -128,6 +130,7 @@ public class GameController : MonoBehaviour
     }
     public void playerWins()
     {
+		Application.LoadLevel ("GameOver");
         //this._gameoverSound.Play();
         this.HighScoreLabel.text = "High Score: " + this._scoreValue;
         this.YouWinLabel.gameObject.SetActive(true);
