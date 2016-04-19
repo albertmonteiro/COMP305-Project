@@ -1,11 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Level3EnemyControlller.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\GameController.cs">
     <Files>
-      <File FileName="Assets\_Scripts\HeroControllerScript.cs" Line="127" Column="27" />
-      <File FileName="Assets\_Scripts\MenuController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\GameController.cs" Line="160" Column="33" />
-      <File FileName="Assets\_Scripts\ScoreBoardController.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\ScoreBoardController.cs" Line="14" Column="22" />
+      <File FileName="Assets\_Scripts\HeroControllerScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\MenuController.cs" Line="34" Column="21" />
+      <File FileName="Assets\_Scripts\GameController.cs" Line="92" Column="20" />
       <File FileName="Assets\_Scripts\Level3EnemyControlller.cs" Line="20" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>

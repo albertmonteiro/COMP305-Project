@@ -61,6 +61,8 @@
      <Compile Include="Assets\_Scripts\Monster002Controller.cs" />
      <Compile Include="Assets\_Scripts\ScoreBoardController.cs" />
      <None Include="Assets\Editor\SettingsTexturePackerImporter.txt" />
+     <None Include="Assets\Buttons\Read me.txt" />
+     <None Include="Assets\Buttons\pizzadudedotdk.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
