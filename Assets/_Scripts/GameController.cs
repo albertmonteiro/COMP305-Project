@@ -71,7 +71,6 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		DontDestroyOnLoad (this);
         this._initialize();
     }
 
@@ -103,9 +102,9 @@ public class GameController : MonoBehaviour
         this.HighScoreLabel.text = "Score: " + this._scoreValue;
         this.YouWinLabel.gameObject.SetActive(false);
         this.GameOverLabel.gameObject.SetActive(false);
-        this.HighScoreLabel.gameObject.SetActive(true);
+        this.HighScoreLabel.gameObject.SetActive(false);
         this.LivesLabel.gameObject.SetActive(false);
-        this.ScoreLabel.gameObject.SetActive(false);
+        this.ScoreLabel.gameObject.SetActive(true);
         this.hero.gameObject.SetActive(false);
         this.RestartButton.gameObject.SetActive(true);
         this.NextLevelButton.gameObject.SetActive(true);
@@ -119,7 +118,7 @@ public class GameController : MonoBehaviour
         this.HighScoreLabel.text = "High Score: " + this._scoreValue;
         this.YouWinLabel.gameObject.SetActive(false);
         this.GameOverLabel.gameObject.SetActive(true);
-        this.HighScoreLabel.gameObject.SetActive(true);
+        //this.HighScoreLabel.gameObject.SetActive(true);
         this.LivesLabel.gameObject.SetActive(false);
         this.ScoreLabel.gameObject.SetActive(false);
         this.hero.gameObject.SetActive(false);
@@ -133,9 +132,9 @@ public class GameController : MonoBehaviour
         this.HighScoreLabel.text = "High Score: " + this._scoreValue;
         this.YouWinLabel.gameObject.SetActive(true);
         this.GameOverLabel.gameObject.SetActive(false);
-        this.HighScoreLabel.gameObject.SetActive(true);
+		//this.HighScoreLabel.gameObject.SetActive(true);
         this.LivesLabel.gameObject.SetActive(false);
-        this.ScoreLabel.gameObject.SetActive(false);
+        this.ScoreLabel.gameObject.SetActive(true);
         this.hero.gameObject.SetActive(false);
         this.RestartButton.gameObject.SetActive(true);
         this.NextLevelButton.gameObject.SetActive(false);
@@ -145,7 +144,10 @@ public class GameController : MonoBehaviour
     // Restart Button event handler
     public void RestartButtonClick()
     {
+		scoreBoard.Score = 0;
+		scoreBoard.Lives = 10;
         Application.LoadLevel("MainMenu");
+
     }
 	public void RestartLevel(){
 		if (Application.loadedLevelName == "Level1")
