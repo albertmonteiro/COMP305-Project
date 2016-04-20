@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
         {
 			this._scoreValue = value;
             this.ScoreLabel.text = "Score: " + this._scoreValue;
+			this.HighScoreLabel.text = "High Score:" + this._scoreValue;
         }
     }
 
@@ -102,9 +103,9 @@ public class GameController : MonoBehaviour
         this.HighScoreLabel.text = "Score: " + this._scoreValue;
         this.YouWinLabel.gameObject.SetActive(false);
         this.GameOverLabel.gameObject.SetActive(false);
-        this.HighScoreLabel.gameObject.SetActive(false);
+        this.HighScoreLabel.gameObject.SetActive(true);
         this.LivesLabel.gameObject.SetActive(false);
-        this.ScoreLabel.gameObject.SetActive(true);
+        this.ScoreLabel.gameObject.SetActive(false);
         this.hero.gameObject.SetActive(false);
         this.RestartButton.gameObject.SetActive(true);
         this.NextLevelButton.gameObject.SetActive(true);
@@ -118,7 +119,7 @@ public class GameController : MonoBehaviour
         this.HighScoreLabel.text = "High Score: " + this._scoreValue;
         this.YouWinLabel.gameObject.SetActive(false);
         this.GameOverLabel.gameObject.SetActive(true);
-        //this.HighScoreLabel.gameObject.SetActive(true);
+        this.HighScoreLabel.gameObject.SetActive(true);
         this.LivesLabel.gameObject.SetActive(false);
         this.ScoreLabel.gameObject.SetActive(false);
         this.hero.gameObject.SetActive(false);
@@ -132,7 +133,7 @@ public class GameController : MonoBehaviour
         this.HighScoreLabel.text = "High Score: " + this._scoreValue;
         this.YouWinLabel.gameObject.SetActive(true);
         this.GameOverLabel.gameObject.SetActive(false);
-		//this.HighScoreLabel.gameObject.SetActive(true);
+		this.HighScoreLabel.gameObject.SetActive(true);
         this.LivesLabel.gameObject.SetActive(false);
         this.ScoreLabel.gameObject.SetActive(true);
         this.hero.gameObject.SetActive(false);
