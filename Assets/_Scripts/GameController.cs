@@ -99,9 +99,7 @@ public class GameController : MonoBehaviour
     // PUBLIC METHODS +++++++++++++++++++++++++++++++++++
     public void levelCompleted()
     {
-		
-
-        //this._gameoverSound.Play();
+		//this._gameoverSound.Play();
         this.HighScoreLabel.text = "Score: " + this._scoreValue;
         this.YouWinLabel.gameObject.SetActive(false);
         this.GameOverLabel.gameObject.SetActive(false);
@@ -175,5 +173,4 @@ public class GameController : MonoBehaviour
             Application.LoadLevel("Level3");
         }
 	}
-
 }

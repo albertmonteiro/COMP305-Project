@@ -66,11 +66,21 @@
     <Compile Include="Assets\_Scripts\GameController.cs" />
     <Compile Include="Assets\_Scripts\HeroControllerScript.cs" />
     <Compile Include="Assets\_Scripts\InstructionsController.cs" />
+    <Compile Include="Assets\_Scripts\Level2EnemyController.cs" />
+    <Compile Include="Assets\_Scripts\Level2EnemyController1.cs" />
+    <Compile Include="Assets\_Scripts\Level2EnemyController2.cs" />
+    <Compile Include="Assets\_Scripts\Level2EnemyController3.cs" />
+    <Compile Include="Assets\_Scripts\Level2EnemyController4.cs" />
+    <Compile Include="Assets\_Scripts\Level2EnemyController5.cs" />
+    <Compile Include="Assets\_Scripts\Level3EnemyControlller.cs" />
     <Compile Include="Assets\_Scripts\MenuController.cs" />
     <Compile Include="Assets\_Scripts\Monster001Controller.cs" />
     <Compile Include="Assets\_Scripts\Monster002Controller.cs" />
+    <Compile Include="Assets\_Scripts\ScoreBoardController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Buttons\Read me.txt" />
+    <None Include="Assets\Buttons\pizzadudedotdk.txt" />
     <None Include="Assets\Editor\SettingsTexturePackerImporter.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
