@@ -17,7 +17,8 @@ public class GameController : MonoBehaviour
     // PRIVATE INSTANCE VARIABLES
     private int _scoreValue;
     private int _livesValue;
-
+	private AudioSource[] _audioSources;
+	private AudioSource _gameOverSound;
 	public ScoreBoardController scoreBoard;
     //[SerializeField]
     //private AudioSource _gameoverSound;
@@ -73,6 +74,11 @@ public class GameController : MonoBehaviour
     void Start()
     {
         this._initialize();
+		this._audioSources = gameObject.GetComponents<AudioSource>();
+		this._gameOverSound = this._audioSources [0];
+		if (Application.loadedLevelName == "GameOver") {
+			this._gameOverSound.Play ();
+		}
     }
 
     // Update is called once per frame
