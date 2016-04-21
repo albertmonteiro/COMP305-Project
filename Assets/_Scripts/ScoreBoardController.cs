@@ -10,7 +10,7 @@ public class ScoreBoardController : MonoBehaviour {
 	void Start () {
 		DontDestroyOnLoad (this.gameObject);
 		this.Score = 0;
-		this.Lives = 10;
+		this.Lives = 5;
 		Invoke ("Load", 4);
 	}
 	

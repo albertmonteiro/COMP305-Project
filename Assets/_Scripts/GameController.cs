@@ -152,7 +152,7 @@ public class GameController : MonoBehaviour
     public void RestartButtonClick()
     {
 		scoreBoard.Score = 0;
-		scoreBoard.Lives = 10;
+		scoreBoard.Lives = 5;
         Application.LoadLevel("MainMenu");
 
     }
